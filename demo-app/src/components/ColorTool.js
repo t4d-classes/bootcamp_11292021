@@ -1,17 +1,8 @@
-export const ColorTool = () => {
+import React from "react";
 
-  const colors = [
-    { id: 1, name: 'red', hexcode: 'ff0000' },
-    { id: 2, name: 'green', hexcode: '00ff00' },
-    { id: 3, name: 'blue', hexcode: '0000ff' },
-  ];
+export const ColorTool = (props) => {
 
-  const colorListItems = colors.map(color => {
-    return <li key={color.id}>{color.name} {color.hexcode}</li>;
-  })
 
-  console.log(colors);
-  console.log(colorListItems);
 
   return (
     <>
@@ -19,7 +10,10 @@ export const ColorTool = () => {
         <h1>Color Tool</h1>
       </header>
       <ul>
-        {colorListItems}
+        {props.colors.map(color =>
+          <li key={color.id}>
+            {color.name} {color.hexcode}
+          </li>)}
       </ul>
     </>
   );
