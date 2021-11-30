@@ -1,5 +1,7 @@
 import { useState} from "react";
 
+import { ToolHeader } from "./ToolHeader";
+
 export const ColorTool = (props) => {
 
   const [ colors, setColors ] = useState([ ...props.colors ]);
@@ -36,9 +38,7 @@ export const ColorTool = (props) => {
 
   return (
     <>
-      <header>
-        <h1>Color Tool</h1>
-      </header>
+      <ToolHeader headerText="Color Tool" />
       <ul>
         {colors.map(color =>
           <li key={color.id}>
@@ -59,4 +59,9 @@ export const ColorTool = (props) => {
     </>
   );
 
+};
+
+
+ColorTool.defaultProps = {
+  colors: [],
 };
