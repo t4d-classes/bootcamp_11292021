@@ -9,6 +9,9 @@ const colorList = [
 ];
 
 render(
-  <ColorTool colors={colorList} />,
+  <>
+    {/* React.createElement(ColorTool, { colors: colorList })   */}
+    <ColorTool colors={colorList} />
+  </>,
   document.querySelector('#root'),
 );
