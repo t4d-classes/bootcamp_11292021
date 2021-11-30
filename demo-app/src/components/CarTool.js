@@ -16,7 +16,8 @@ export const CarTool = (props) => {
       // object spread operator
       ...carForm,
       // computed property
-      [ e.target.name ]: e.target.value,
+      [ e.target.name ]: e.target.type === 'number'
+        ? parseInt(e.target.value, 10) : e.target.value,
     });
 
   };
@@ -62,7 +63,7 @@ export const CarTool = (props) => {
         </label>
         <label>
           Year:
-          <input type="text" name="year" value={carForm.year} onChange={change} />
+          <input type="number" name="year" value={carForm.year} onChange={change} />
         </label>
         <label>
           Color:
@@ -70,7 +71,7 @@ export const CarTool = (props) => {
         </label>
         <label>
           Price:
-          <input type="text" name="price" value={carForm.price} onChange={change} />
+          <input type="number" name="price" value={carForm.price} onChange={change} />
         </label>
       </form>
     </>
