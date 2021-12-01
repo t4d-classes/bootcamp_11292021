@@ -20,6 +20,13 @@ export const CarEditRow = props => {
 
   };
 
+  const saveCar = () => {
+    props.onSaveCar({
+      ...carForm,
+      id: props.car.id,
+    });
+  };
+
 
   return (
     <tr>
@@ -31,9 +38,9 @@ export const CarEditRow = props => {
       <td><input type="number" name="price" value={carForm.price} onChange={change} /></td>
       <td>
         <button type="button"
-          onClick={() => null}>Save</button>
+          onClick={saveCar}>Save</button>
         <button type="button"
-          onClick={() => null}>Cancel</button>
+          onClick={props.onCancelCar}>Cancel</button>
       </td>
     </tr>    
   );

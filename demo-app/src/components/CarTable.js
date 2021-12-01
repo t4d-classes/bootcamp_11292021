@@ -19,7 +19,8 @@ export const CarTable = props => {
       <tbody>
         {props.cars.map(car =>
           props.editCarId === car.id
-            ? <CarEditRow key={car.id} car={car} />
+            ? <CarEditRow key={car.id} car={car}
+                onSaveCar={props.onSaveCar} onCancelCar={props.onCancelCar} />
             : <CarViewRow key={car.id} car={car}
                 onEditCar={props.onEditCar} onDeleteCar={props.onDeleteCar} />)}
       </tbody>
