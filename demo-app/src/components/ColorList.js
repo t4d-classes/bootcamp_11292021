@@ -9,7 +9,8 @@ export const ColorList = props => {
         ? <li>No colors</li>
         : props.colors.map(color =>
         <li key={color.id}>
-          {color.name} {color.hexcode}
+          {color.id} {color.name} {color.hexcode}
+          <button type="button" onClick={() => props.onDeleteColor(color.id)}>X</button>
         </li>)}
     </ul>
   );
