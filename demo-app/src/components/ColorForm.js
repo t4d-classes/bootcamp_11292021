@@ -1,31 +1,15 @@
-import { useState} from "react";
+import { useForm } from '../hooks/useForm';
 
 export const ColorForm = (props) => {
 
-  const [ colorForm, setColorForm ] = useState({
+  const [ colorForm, change, resetColorForm ] = useForm({
     name: '',
     hexcode: '',
   });
-
-
-  const change = e => {
-
-    setColorForm({
-      // object spread operator
-      ...colorForm,
-      // computed property
-      [ e.target.name ]: e.target.value,
-    });
-
-  };
   
   const submitColor = () => {
-
     props.onSubmitColor({ ...colorForm });
-
-    setColorForm({
-      name: '', hexcode: ''
-    });
+    resetColorForm();
   };
 
   return (
