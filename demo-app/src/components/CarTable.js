@@ -1,4 +1,5 @@
 import { CarViewRow } from './CarViewRow';
+import { CarEditRow } from './CarEditRow';
 
 export const CarTable = props => {
 
@@ -17,8 +18,10 @@ export const CarTable = props => {
       </thead>
       <tbody>
         {props.cars.map(car =>
-          <CarViewRow key={car.id} car={car}
-            onDeleteCar={props.onDeleteCar} />)}
+          props.editCarId === car.id
+            ? <CarEditRow key={car.id} car={car} />
+            : <CarViewRow key={car.id} car={car}
+                onEditCar={props.onEditCar} onDeleteCar={props.onDeleteCar} />)}
       </tbody>
     </table>
 
