@@ -1,6 +1,7 @@
 import { useState} from "react";
 
 import { ToolHeader } from './ToolHeader';
+import { ToolFooter } from './ToolFooter';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
 
@@ -37,6 +38,7 @@ export const CarTool = (props) => {
       <CarTable cars={cars} editCarId={editCarId}
         onEditCar={editCar} onDeleteCar={deleteCar} />
       <CarForm buttonText="Add Car" onSubmitCar={addCar} />
+      <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
 
