@@ -1,5 +1,7 @@
 import { render } from 'react-dom';
 
+import { ColorToolStoreProvider } from './contexts/colorToolStoreContext';
+
 import { ColorTool } from './components/ColorTool';
 import { CarTool } from './components/CarTool';
 
@@ -18,7 +20,9 @@ const carList = [
 
 render(
   <>
-    <ColorTool colors={colorList} />
+    <ColorToolStoreProvider colors={colorList}>
+      <ColorTool />
+    </ColorToolStoreProvider>
     <CarTool cars={carList} />
   </>,
   document.querySelector('#root'),

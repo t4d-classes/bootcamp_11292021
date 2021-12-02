@@ -5,20 +5,23 @@ import { ToolFooter } from './ToolFooter';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
 
-export const CarTool = (props) => {
+export const CarTool = ({ cars: initialCars }) => {
 
-  const store = useCarToolStore([ ...props.cars ]);
-
+  // const store = useCarToolStore([ ...props.cars ]);
+  const {
+    cars, editCarId, sortCol, sortDir,
+    editCar, deleteCar, sortCars,
+    saveCar, cancelCar, addCar } = useCarToolStore([ ...initialCars ]);
 
   return (
     <>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={store.cars} editCarId={store.editCarId}
-        sortCol={store.sortCol} sortDir={store.sortDir}
-        onEditCar={store.editCar} onDeleteCar={store.deleteCar}
-        onSortCars={store.sortCars}
-        onSaveCar={store.saveCar} onCancelCar={store.cancelCar} />
-      <CarForm buttonText="Add Car" onSubmitCar={store.addCar} />
+      <CarTable cars={cars} editCarId={editCarId}
+        sortCol={sortCol} sortDir={sortDir}
+        onEditCar={editCar} onDeleteCar={deleteCar}
+        onSortCars={sortCars}
+        onSaveCar={saveCar} onCancelCar={cancelCar} />
+      <CarForm buttonText="Add Car" onSubmitCar={addCar} />
       <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
