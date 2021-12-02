@@ -1,0 +1,104 @@
+
+
+.container {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+
+  display: grid;
+
+  grid-template-rows: 70px 40px 1fr 40px;
+  grid-template-columns: 4fr 1fr;
+
+  grid-template-areas:
+    'header header'
+    'menu menu'
+    'content sidebar'
+    'footer footer';
+}
+
+.container > header {
+  grid-area: header;
+  background-color: navy;
+
+  padding-left: 10px;
+
+  color: white;
+  font-size: 2rem;
+
+  display: flex;
+
+  flex-direction: row;
+
+  /* major axis alignment */
+  justify-content: flex-start;
+  /* minor axis alignment */
+  align-items: center;
+}
+
+.container > nav {
+  grid-area: menu;
+  background-color: lightgray;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 2px 6px;
+  margin: 0;
+}
+
+.menu-item > a,
+.menu-item > a:visited,
+.menu-item > a:active,
+.menu-item > a:hover {
+  color: black;
+}
+
+.menu-item > a,
+.menu-item > a:visited,
+.menu-item > a:active {
+  text-decoration: none;
+}
+
+.menu-item > a:hover {
+  text-decoration: underline;
+}
+
+.container > main {
+  grid-area: content;
+  background-color: white;
+  padding: 10px;
+}
+
+.container > aside {
+  grid-area: sidebar;
+  background-color: orange;
+  padding: 10px;
+}
+
+.container > footer {
+  grid-area: footer;
+  background-color: navy;
+
+  padding-top: 8px;
+
+  display: grid;
+  justify-content: center;
+
+  color: white;
+  font-size: 0.8rem;
+}

@@ -1,7 +1,6 @@
 
 import { useColorTool } from '../hooks/useColorTool';
 
-import { ToolHeader } from "./ToolHeader";
 import { ColorList } from './ColorList';
 import { ColorForm } from './ColorForm';
 
@@ -11,7 +10,6 @@ export const ColorTool = () => {
 
   return (
     <>
-      <ToolHeader headerText="Color Tool" />
       <button type="button" onClick={store.sortColors}>
         Current Sort: {store.sortCol}-{store.sortDir}</button>
       <ColorList colors={store.sortedColors} onDeleteColor={store.deleteColor} />
