@@ -1,18 +1,34 @@
 import { CarViewRow } from './CarViewRow';
 import { CarEditRow } from './CarEditRow';
 
+const cols = [
+  [ 'Id', 'id' ],
+  [ 'Make', 'make' ],
+  [ 'Model', 'model' ],
+  [ 'Year', 'year' ],
+  [ 'Color', 'color' ],
+  [ 'Price', 'price' ],
+];
+
 export const CarTable = props => {
+
+  const sortDirectionIndicator = (sortCol) => {
+    if (sortCol === props.sortCol) {
+      return props.sortDir === 'asc' ? ' v' : ' ^';
+    }
+    return '';
+  };
+
 
   return (
     <table>
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Year</th>
-          <th>Color</th>
-          <th>Price</th>
+          {cols.map(([ header, field ]) => <th key={field}>
+            <button type="button" onClick={() => props.onSortCars(field)}>
+              {header}{sortDirectionIndicator(field)}
+            </button>
+          </th>)}
           <th>Actions</th>
         </tr>
       </thead>
