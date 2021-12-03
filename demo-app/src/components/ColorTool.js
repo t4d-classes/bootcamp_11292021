@@ -10,6 +10,12 @@ export const ColorTool = () => {
 
   return (
     <>
+      <div>
+        Sort Direction:
+        <span style={{fontWeight: store.sortDir === 'asc' ? 'bold' : 'normal'}}>ASC</span>
+        <span style={{fontWeight: store.sortDir === 'desc' ? 'bold' : 'normal'}}>DESC</span>
+      </div>
+
       <button type="button" onClick={store.sortColors}>
         Current Sort: {store.sortCol}-{store.sortDir}</button>
       <ColorList colors={store.sortedColors} onDeleteColor={store.deleteColor} />
