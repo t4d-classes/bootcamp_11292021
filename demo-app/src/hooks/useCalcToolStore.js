@@ -4,11 +4,13 @@ import { bindActionCreators } from "redux";
 import {
   createAddAction, createSubtractAction,
   createMultiplyAction, createDivideAction,
+  createClearAction,
 } from '../actions/calcToolActions';
 
 export const useCalcToolStore = () => {
 
   const result = useSelector(state => state.result);
+  const history = useSelector(state => state.history);
 
   const dispatch = useDispatch();
 
@@ -22,10 +24,12 @@ export const useCalcToolStore = () => {
     subtract: createSubtractAction,
     multiply: createMultiplyAction,
     divide: createDivideAction,
+    clear: createClearAction,
   }, dispatch);
 
   return {
     result,
+    history,
     ...boundActions,
   };
 

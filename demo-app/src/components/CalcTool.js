@@ -4,9 +4,16 @@ import { useCalcToolStore } from '../hooks/useCalcToolStore';
 
 export const CalcTool = () => {
 
-  const { result, add, subtract, multiply, divide } = useCalcToolStore();
+  const {
+    result, history,
+    add, subtract, multiply, divide, clear } = useCalcToolStore();
 
   const [ numInput, setNumInput ] = useState(0);
+
+  const doClear = () => {
+    setNumInput(0);
+    clear();
+  }
 
   return (
     <div>
@@ -29,8 +36,13 @@ export const CalcTool = () => {
             onClick={() => multiply(numInput)}>*</button>
           <button type="button"
             onClick={() => divide(numInput)}>/</button>
+          <button type="button"
+            onClick={doClear}>C</button>
         </fieldset>
       </form>
+      <ul>
+        {history.map(entry => <li key={entry.id}>{entry.opName} {entry.opValue}</li>)}
+      </ul>
     </div>
   )
 
