@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import {
-  createAddAction, createSubtractAction
+  createAddAction, createSubtractAction,
+  createMultiplyAction, createDivideAction,
 } from '../actions/calcToolActions';
 
 export const useCalcToolStore = () => {
@@ -19,6 +20,8 @@ export const useCalcToolStore = () => {
   const boundActions = bindActionCreators({
     add: createAddAction,
     subtract: createSubtractAction,
+    multiply: createMultiplyAction,
+    divide: createDivideAction,
   }, dispatch);
 
   return {
