@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import { ColorToolStoreProvider } from '../contexts/colorToolStoreContext';
 import { CarToolStoreProvider } from '../contexts/carToolStoreContext';
@@ -27,26 +27,26 @@ export const App = () => {
       <Layout>
         <ToolHeader headerText="The Tools" />
         <nav>
-          <ul class="menu">
-            <li class="menu-item"><Link to="/">Home</Link></li>
-            <li class="menu-item"><Link to="/color-tool">Color Tool</Link></li>
-            <li class="menu-item"><Link to="/car-tool">Car Tool</Link></li>
+          <ul className="menu">
+            <li className="menu-item"><Link to="/">Home</Link></li>
+            <li className="menu-item"><Link to="/color-tool">Color Tool</Link></li>
+            <li className="menu-item"><Link to="/car-tool">Car Tool</Link></li>
           </ul>
         </nav>
         <main>
-          <Route path="/" exact>
-            <h1>Home</h1>
-          </Route>
-          <Route path="/color-tool">
-            <ColorToolStoreProvider colors={colorList}>
-              <ColorTool />
-            </ColorToolStoreProvider>
-          </Route>
-          <Route path="/car-tool">
-            <CarToolStoreProvider cars={carList}>
-              <CarTool />
-            </CarToolStoreProvider>
-          </Route>
+          <Routes>
+            <Route path="/" element={<h1>Home</h1>} />
+            <Route path="/color-tool" element={
+              <ColorToolStoreProvider colors={colorList}>
+                <ColorTool />
+              </ColorToolStoreProvider>
+            } />
+            <Route path="/car-tool" element={
+              <CarToolStoreProvider cars={carList}>
+                <CarTool />
+              </CarToolStoreProvider>
+            } />
+          </Routes>
         </main>
         <aside>Sidebar</aside>
         <ToolFooter companyName="A Cool Company, Inc." />
