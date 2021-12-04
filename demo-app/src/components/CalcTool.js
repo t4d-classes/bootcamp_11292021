@@ -16,8 +16,11 @@ export const CalcTool = () => {
     clear();
   }
 
+  const junk = "<script>alert(0);</script>";
+
   return (
     <div>
+      {junk}
       <section>
         Result: {result}
       </section>

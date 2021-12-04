@@ -63,7 +63,7 @@ const historyReducer = (/* state */ history = [], action) => {
 
 };
 
-export const errorMessageReducer = (errorMessage = "", action) => {
+const errorMessageReducer = (errorMessage = "", action) => {
 
   if (action.type === DIVIDE_ACTION && action.payload.value === 0) {
     return "Cannot divide by zero.";
