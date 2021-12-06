@@ -6,29 +6,6 @@ import {
   CLEAR_ACTION, DELETE_HISTORY_ENTRY_ACTION,
 } from "../actions/calcToolActions";
 
-const resultReducer = (/* state */ result = 0, action) => {
-
-  switch (action.type) {
-    case ADD_ACTION:
-      return result + action.payload.value;
-    case SUBTRACT_ACTION:
-      return result - action.payload.value;
-    case MULTIPLY_ACTION:
-      return result * action.payload.value;
-    case DIVIDE_ACTION:
-      if (action.payload.value === 0) {
-        return result;
-      }
-      return result / action.payload.value;
-    case CLEAR_ACTION:
-      return 0;
-    default:
-      return result;
-  }
-
-
-};
-
 const historyReducer = (/* state */ history = [], action) => {
 
   if ([
@@ -80,7 +57,6 @@ const errorMessageReducer = (errorMessage = "", action) => {
 
 };
 
-
 // export const calcToolReducer = (state = { }, action) => {
 
 //   return {
@@ -91,7 +67,6 @@ const errorMessageReducer = (errorMessage = "", action) => {
 // };
 
 export const calcToolReducer = combineReducers({
-  result: resultReducer,
   history: historyReducer,
   errorMessage: errorMessageReducer,
 });
