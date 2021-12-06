@@ -10,34 +10,64 @@ import {
 
 export const useCalcToolStore = () => {
 
+  // const result = useSelector(state => {
+
+  //   let result = 0;
+
+  //   state.history.forEach(entry => {
+
+  //     switch (entry.opName) {
+  //       case ADD_ACTION:
+  //         result += entry.opValue;
+  //         break;
+  //       case SUBTRACT_ACTION:
+  //         result -= entry.opValue;
+  //         break;
+  //       case MULTIPLY_ACTION:
+  //         result *= entry.opValue;
+  //         break;
+  //       case DIVIDE_ACTION:
+  //         result /= entry.opValue;
+  //         break;
+  //       default:
+  //         break;
+  //     }
+
+  //   });
+
+  //   return result;
+
+  // });
+
   const result = useSelector(state => {
-
-    let result = 0;
-
-    state.history.forEach(entry => {
-
+    return state.history.reduce( (theResult, entry) => {
       switch (entry.opName) {
         case ADD_ACTION:
-          result += entry.opValue;
-          break;
+          return theResult + entry.opValue;
         case SUBTRACT_ACTION:
-          result -= entry.opValue;
-          break;
+          return theResult - entry.opValue;
         case MULTIPLY_ACTION:
-          result *= entry.opValue;
-          break;
+          return theResult * entry.opValue;
         case DIVIDE_ACTION:
-          result /= entry.opValue;
-          break;
+          return theResult / entry.opValue;
         default:
-          break;
+          return theResult;
       }
-
-    });
-
-    return result;
-
+    }, 0 /* initial value of theResult */);
   });
+
+  const opCounts = useSelector(state => {
+    return state.history.reduce( (theOpCounts, entry) => {
+      if (theOpCounts[entry.opName]) {
+        theOpCounts[entry.opName]++;
+      } else {
+        theOpCounts[entry.opName] = 1;
+      }
+      return theOpCounts;
+    }, {});
+  });
+
+
   const history = useSelector(state => state.history);
   const errorMessage = useSelector(state => state.errorMessage);
 
@@ -61,6 +91,7 @@ export const useCalcToolStore = () => {
     result,
     history,
     errorMessage,
+    opCounts,
     ...boundActions,
   };
 

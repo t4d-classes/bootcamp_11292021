@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import {
+  ADD_ACTION, SUBTRACT_ACTION,
+  MULTIPLY_ACTION, DIVIDE_ACTION } from '../actions/calcToolActions';
 
 import { useCalcToolStore } from '../hooks/useCalcToolStore';
 
 export const CalcTool = () => {
 
   const {
-    result, history, errorMessage,
+    result, history, errorMessage, opCounts,
     add, subtract, multiply, divide,
     clear, deleteHistoryEntry } = useCalcToolStore();
 
@@ -16,11 +19,8 @@ export const CalcTool = () => {
     clear();
   }
 
-  const junk = "<script>alert(0);</script>";
-
   return (
     <div>
-      {junk}
       <section>
         Result: {result}
       </section>
@@ -51,6 +51,32 @@ export const CalcTool = () => {
           <button type="button" onClick={() => deleteHistoryEntry(entry.id)}>X</button>
         </li>)}
       </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Op Name</th>
+            <th>Op Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Add</td>
+            <td>{opCounts[ADD_ACTION]}</td>
+          </tr>
+          <tr>
+            <td>Subtract</td>
+            <td>{opCounts[SUBTRACT_ACTION]}</td>
+          </tr>
+          <tr>
+            <td>Add</td>
+            <td>{opCounts[MULTIPLY_ACTION]}</td>
+          </tr>
+          <tr>
+            <td>Add</td>
+            <td>{opCounts[DIVIDE_ACTION]}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 
