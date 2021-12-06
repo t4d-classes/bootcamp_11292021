@@ -39,5 +39,77 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+
+      // const outer = () => {
+
+      //   let t = 2;
+      //   console.log("called outer");
+
+      //   setTimeout(function firstTimeout() {
+      //     t = 4;
+      //     console.log("first timeout")
+      //   }, 2000);
+
+      //   return function inner() {
+      //     console.log(t);
+      //   };
+      // };
+
+      // const inner = outer();
+
+      // inner();
+
+      // setTimeout(function secondTimeout(){
+      //   inner();
+      //   console.log("first timeout")
+      // }, 4000)
+
+      // // console.dir(inner);
+
+      // setTimeout(() => {
+      //   console.log("a");
+      // }, 0);
+
+      // console.log("b");
+
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
+
+      // setTimeout(() => {
+      //   console.log("a");
+      //   setTimeout(() => {
+      //     console.log("b");
+      //     setTimeout(() => {
+      //       console.log("c");
+      //     }, delay());
+      //   }, delay());
+      // }, delay());
+
+      // Lab Exercise
+
+      // 1. Run the allDone function after all 3 setTimeout callbacks execute
+      // 2. The call to all 3 setTimeouts must be done in the first task
+      // 3. You can modify the code however you want except for the following:
+        // - No promises
+        // - The console logs for a, b, c must run in different tasks
+
+      function allDone() {
+        console.log('all done');
+      }
+
+      setTimeout(() => {
+        console.log('a');
+      }, delay());
+
+      setTimeout(() => {
+        console.log('b');
+      }, delay());
+
+      setTimeout(() => {
+        console.log('c');
+      }, delay());
+
+
+    </script>
   </body>
 </html>
