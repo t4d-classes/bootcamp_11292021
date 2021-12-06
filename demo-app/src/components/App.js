@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import { ColorToolStoreProvider } from '../contexts/colorToolStoreContext';
 import { CarToolStoreProvider } from '../contexts/carToolStoreContext';
+
+import { colorToolStore } from '../stores/colorToolStore';
 
 import { Layout } from './Layout';
 import { ToolHeader } from './ToolHeader';
@@ -37,9 +40,9 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<h1>Home</h1>} />
             <Route path="/color-tool" element={
-              <ColorToolStoreProvider colors={colorList}>
+              <Provider store={colorToolStore}>
                 <ColorTool />
-              </ColorToolStoreProvider>
+              </Provider>
             } />
             <Route path="/car-tool" element={
               <CarToolStoreProvider cars={carList}>

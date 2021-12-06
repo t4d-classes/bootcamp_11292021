@@ -1,12 +1,14 @@
 
-import { useColorTool } from '../hooks/useColorTool';
+import { useColorToolReduxStore } from '../hooks/useColorToolReduxStore';
 
 import { ColorList } from './ColorList';
 import { ColorForm } from './ColorForm';
 
 export const ColorTool = () => {
 
-  const store = useColorTool(true);
+  const store = useColorToolReduxStore();
+
+  console.log(store);
 
   return (
     <>
