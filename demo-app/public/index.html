@@ -93,21 +93,110 @@
         // - No promises
         // - The console logs for a, b, c must run in different tasks
 
-      function allDone() {
-        console.log('all done');
-      }
+      // function allDone() {
+      //   console.log('all done');
+      // }
 
-      setTimeout(() => {
-        console.log('a');
-      }, delay());
+      // let counter = 0;
 
-      setTimeout(() => {
-        console.log('b');
-      }, delay());
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('a');
+      //   counter--;
+      //   if (counter === 0) allDone();
+      // }, delay());
 
-      setTimeout(() => {
-        console.log('c');
-      }, delay());
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('b');
+      //   counter--;
+      //   if (counter === 0) allDone();
+      // }, delay());
+
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('c');
+      //   counter--;
+      //   if (counter === 0) allDone();
+      // }, delay());
+
+
+      // class Promise {
+
+      //   constructor(fn) {
+
+      //     this.resolveFns = [];
+      //     this.rejectFns = [];
+
+      //     const resolveFn = result => {
+      //       this.resolveFns.forEach(fn => fn(result));
+      //     };
+
+      //     const rejectFn = result => {
+      //       this.rejectFns.forEach(fn => fn(result));
+      //     };
+
+
+      //     fn(resolveFn, rejectFn);
+      //   }
+
+      //   then(fn) {
+      //     this.resolveFns.push(fn);
+      //   }
+
+      //   catch(fn) {
+      //     this.rejectFns.push(fn);
+      //   }
+
+
+      // }  
+
+
+
+      // const p = new Promise((resolve, reject) => {
+
+      //   setTimeout(() => {
+      //     resolve({ name: 'a' });
+      //   }, 2000);
+
+      // });
+
+      // p
+      //   .then(result => {
+      //     console.log(result.name);
+      //   })
+      //   // .catch(result => {
+      //   //   console.log('rejected: ' + result.name);
+      //   // });
+
+      // p.then(result => {
+
+      // })
+
+      // console.log('made it here');
+
+
+      const taskA = () => new Promise(resolve => setTimeout(() => resolve('a'), delay()));
+      const taskB = () => new Promise(resolve => setTimeout(() => resolve('b'), delay()));
+      const taskC = () => new Promise(resolve => setTimeout(() => resolve('c'), delay()));
+
+      // taskA()
+      //   .then(result => {
+      //     console.log(result);
+      //     return taskB();
+      //   })
+      //   .then(result => {
+      //     console.log(result);
+      //     return taskC();
+      //   })
+      //   .then(result => {
+      //     console.log(result);
+      //   });
+
+      Promise.all([taskA(), taskB(), taskC()]).then(results => {
+        console.log("all done");
+        console.log(results);
+      });
 
 
     </script>
