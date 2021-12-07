@@ -14,6 +14,11 @@
       "id": 3,
       "name": "blue",
       "hexcode": "#0000ff"
+    },
+    {
+      "name": "orange",
+      "hexcode": "#ffff00",
+      "id": 4
     }
   ],
   "cars": [
@@ -424,6 +429,46 @@
       "color": "darkblue",
       "price": 45000,
       "id": 51
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 52
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 53
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 54
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 55
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 56
     }
   ]
 }
