@@ -1,9 +1,11 @@
-import { all } from '../apis/colors';
+import { all, append } from '../apis/colors';
 
 export const REFRESH_COLORS_REQUEST_ACTION = 'REFRESH_COLORS_REQUEST';
 export const REFRESH_COLORS_DONE_ACTION = 'REFRESH_COLORS_DONE';
 
-export const ADD_COLOR_ACTION = 'ADD_COLOR';
+export const ADD_COLOR_REQUEST_ACTION = 'ADD_COLOR_REQUEST';
+export const ADD_COLOR_DONE_ACTION = 'ADD_COLOR_DONE';
+
 export const DELETE_COLOR_ACTION = 'DELETE_COLOR';
 export const SORT_COLORS_ACTION = 'SORT_COLORS';
 
@@ -28,8 +30,21 @@ export const refreshColors = () => {
 };
 
 
-export const createAddColorAction = color =>
-  ({ type: ADD_COLOR_ACTION, payload: { color } });
+export const createAddColorRequestAction = color =>
+  ({ type: ADD_COLOR_REQUEST_ACTION, payload: { color } });
+
+export const createAddColorDoneAction = color =>
+  ({ type: ADD_COLOR_DONE_ACTION, payload: { color } });
+
+
+export const addColor = color => {
+  return dispatch => {
+    dispatch(createAddColorRequestAction(color));
+    append(color).then(() => dispatch(refreshColors()));
+  };
+};
+
+
 export const createDeleteColorAction = colorId =>
   ({ type: DELETE_COLOR_ACTION, payload: { colorId } });
 export const createSortColorsAction = () =>
