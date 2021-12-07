@@ -1,10 +1,10 @@
 
-import { useCarToolStoreContext } from '../contexts/carToolStoreContext';
+import { useCarToolReduxStore } from '../hooks/useCarToolReduxStore';
 import { CarForm } from '../components/CarForm';
 
 export const CarFormContainer = () => {
 
-  const { addCar } = useCarToolStoreContext();
+  const { addCar } = useCarToolReduxStore();
 
   return (
     <CarForm buttonText="Add Car" onSubmitCar={addCar} />
