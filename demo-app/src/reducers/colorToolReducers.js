@@ -1,16 +1,15 @@
 import { combineReducers } from "redux";
 
 import {
-  ADD_COLOR_ACTION, DELETE_COLOR_ACTION, SORT_COLORS_ACTION
+  ADD_COLOR_ACTION, DELETE_COLOR_ACTION, SORT_COLORS_ACTION,
+  REFRESH_COLORS_DONE_ACTION
 } from "../actions/colorToolActions";
 
-const colorList = [
-  { id: 1, name: 'red', hexcode: 'ff0000' },
-  { id: 2, name: 'green', hexcode: '00ff00' },
-  { id: 3, name: 'blue', hexcode: '0000ff' },
-];
+export const colorsReducer = (colors = [], action) => {
 
-export const colorsReducer = (colors = colorList, action) => {
+  if (action.type === REFRESH_COLORS_DONE_ACTION) {
+    return action.payload.colors;
+  }
 
   if (action.type === ADD_COLOR_ACTION) {
     return [
@@ -48,9 +47,23 @@ export const colorsSortReducer = (
   return colorsSort;
 }
 
+const isLoadingReducer = (isLoading = false, action) => {
+
+  if (action.type.includes("REQUEST")) {
+    return true;
+  }
+
+  if (action.type.includes("DONE")) {
+    return false;
+  }
+
+  return isLoading;
+};
+
 export const colorToolReducer = combineReducers({
   colors: colorsReducer, // state.colors are the argument to the reducer
   colorsSort: colorsSortReducer,
+  isLoading: isLoadingReducer,
 })
 
 

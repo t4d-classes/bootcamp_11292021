@@ -6,9 +6,13 @@
 // };
 
 export const all = async () => {
-  const res = await fetch("http://localhost:3060/colors")
-  const colors = await res.json();
-  return colors;
+  try {
+    const res = await fetch("http://localhost:3060/colors")
+    const colors = await res.json();
+    return colors;
+  } catch(err) {
+    console.log(err);
+  }
 };
 
 
@@ -31,3 +35,11 @@ export const append = async (color) => {
 // one(colorId: int) -> Promise<Color>
 // replace(color: Color) -> Promise<void>
 // delete(colorId: int) -> Promise<void>
+
+export const deleteColor = async (colorId) => {
+
+  return fetch(
+    `http://localhost:3060/colors/${encodeURIComponent(colorId)}`, {
+      method: 'DELETE',
+    });
+};

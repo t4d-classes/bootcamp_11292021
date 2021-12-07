@@ -352,6 +352,78 @@
       "color": "darkblue",
       "price": 45000,
       "id": 42
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 43
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 44
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 45
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 46
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 47
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 48
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 49
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 50
+    },
+    {
+      "make": "Nissan",
+      "model": "Pathfinder",
+      "year": 2016,
+      "color": "darkblue",
+      "price": 45000,
+      "id": 51
     }
   ]
 }
