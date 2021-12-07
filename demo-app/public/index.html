@@ -202,24 +202,95 @@
     </script>
     <script>
 
-      const xhr = new XMLHttpRequest();
+      // const myFetch = url => {
+      //   return new Promise(resolve => {
 
-      xhr.addEventListener("readystatechange", () => {
-        if (xhr.status === 200 && xhr.readyState === 4) {
-          console.log(JSON.parse(xhr.responseText));
-        }
-      });
+      //     const xhr = new XMLHttpRequest();
 
-      xhr.open("GET", "http://localhost:3060/cars");
-      xhr.send();
+      //     xhr.addEventListener("readystatechange", () => {
+      //       if (xhr.status === 200 && xhr.readyState === 4) {
+      //         resolve(JSON.parse(xhr.responseText));
+      //       }
+      //     });
+
+      //     xhr.open("GET", url);
+      //     xhr.send();
+
+      //   })
+      // }
+
       
       // Lab Exercise
 
       // Using the code above, implement the a function named `myFetch` as described by
       // the following call:
 
-      myFetch("http://localhost:3060/cars").then(cars => console.log(cars));
+      // myFetch("http://localhost:3060/cars").then(cars => console.log(cars));
 
+      // Lab Part 2
+
+      // Using the `myFetch` function, fetch all of the colors, then iterate over the
+      // colors and fetch each color individually. Once all of the individually fetched colors have been returned
+      // display all of the return values.
+
+      // myFetch('http://localhost:3060/colors')
+      //   .then(colors => {
+      //     return Promise.all(
+      //       colors.map(color => {
+      //         return myFetch('http://localhost:3060/colors/' + color.id);
+      //       })
+      //     );
+      //   })
+      //   .then(colors => console.log(colors));
+
+
+      // get all the cars
+      // fetch("http://localhost:3060/cars")
+      //   .then(res => res.json())
+      //   .then(cars => console.log(cars));
+
+      // fetch("http://localhost:3060/cars/1")
+      //   .then(res => res.json())
+      //   .then(car => console.log(car));
+        
+      fetch("http://localhost:3060/cars", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          make: 'Nissan', model: 'Pathfinder', year: 2016,
+          color: 'darkblue', price: 45000,
+        }),
+      })
+      .then(res => {
+        for (let key of res.headers.keys()) {
+          console.log(key, res.headers.get(key));
+        }
+        return res.json();
+      })
+      .then(car => console.log(car));;
+
+      // fetch("http://localhost:3060/cars/3", {
+      //   method: 'PUT',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     id: 3, make: 'Nissan', model: 'Pathfinder', year: 2016,
+      //     color: 'yellow', price: 45000,
+      //   }),
+      // });
+
+      // fetch("http://localhost:3060/cars/3", {
+      //   method: 'DELETE',
+      // });
+
+      // const carId = 3;
+
+      // fetch(`http://localhost:3060/cars/${encodeURIComponent(carId)}`, {
+      //   method: 'PATCH',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     model: 'Murano'
+      //   }),
+      // });      
 
 
 
