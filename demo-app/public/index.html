@@ -176,9 +176,9 @@
       // console.log('made it here');
 
 
-      const taskA = () => new Promise(resolve => setTimeout(() => resolve('a'), delay()));
-      const taskB = () => new Promise(resolve => setTimeout(() => resolve('b'), delay()));
-      const taskC = () => new Promise(resolve => setTimeout(() => resolve('c'), delay()));
+      // const taskA = () => new Promise(resolve => setTimeout(() => resolve('a'), delay()));
+      // const taskB = () => new Promise(resolve => setTimeout(() => resolve('b'), delay()));
+      // const taskC = () => new Promise(resolve => setTimeout(() => resolve('c'), delay()));
 
       // taskA()
       //   .then(result => {
@@ -193,10 +193,34 @@
       //     console.log(result);
       //   });
 
-      Promise.all([taskA(), taskB(), taskC()]).then(results => {
-        console.log("all done");
-        console.log(results);
+      // Promise.all([taskA(), taskB(), taskC()]).then(results => {
+      //   console.log("all done");
+      //   console.log(results);
+      // });
+
+
+    </script>
+    <script>
+
+      const xhr = new XMLHttpRequest();
+
+      xhr.addEventListener("readystatechange", () => {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+          console.log(JSON.parse(xhr.responseText));
+        }
       });
+
+      xhr.open("GET", "http://localhost:3060/cars");
+      xhr.send();
+      
+      // Lab Exercise
+
+      // Using the code above, implement the a function named `myFetch` as described by
+      // the following call:
+
+      myFetch("http://localhost:3060/cars").then(cars => console.log(cars));
+
+
 
 
     </script>
