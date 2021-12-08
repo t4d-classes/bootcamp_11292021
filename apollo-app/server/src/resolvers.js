@@ -53,5 +53,14 @@ export const resolvers = {
 
       return newBook;
     },
+    removeBook: async (_, { bookId }) => {
+
+      const book = await fetch('http://localhost:5050/books/' + bookId)
+        .then(res => res.json());
+
+      await fetch('http://localhost:5050/books/' + bookId, { method: 'DELETE'});
+
+      return book;
+    },
   }
 };
