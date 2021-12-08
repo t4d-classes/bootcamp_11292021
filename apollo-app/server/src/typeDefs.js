@@ -8,6 +8,7 @@ export const typeDefs = gql`
     price: Float
     person: Person
     authors: [Author]
+    books: [Book]
   }
 
   type Person {
@@ -22,6 +23,16 @@ export const typeDefs = gql`
     firstName: String
     lastName: String
     phoneNumber: String
+  }
+
+  type Book {
+    id: ID,
+    isbn: String,
+    title: String,
+    authorId: ID,
+    category: String,
+    price: Float,
+    quantity: Int    
   }
 
 `;
