@@ -1,6 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 
 import { AuthorList } from "./components/AuthorList";
+import { BookTable } from "./components/BookTable";
 
 const APP_QUERY = gql`
   query App {
@@ -8,6 +9,11 @@ const APP_QUERY = gql`
       id
       lastName
       firstName
+    }
+    books {
+      id
+      title
+      price
     }
   }
 `;
@@ -19,7 +25,10 @@ function App() {
   if (error) return <p>Error :(</p>;
 
   return (
-    <AuthorList authors={data.authors} />
+    <>
+      <AuthorList authors={data.authors} />
+      <BookTable books={data.books} />
+    </>
   );
 }
 
