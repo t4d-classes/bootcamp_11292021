@@ -42,5 +42,16 @@ export const resolvers = {
 
       return newAuthor;
     },
+    appendBook: async (_, { book }) => {
+      const res = await fetch('http://localhost:5050/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(book),
+      });
+
+      const newBook = await res.json();
+
+      return newBook;
+    },
   }
 };

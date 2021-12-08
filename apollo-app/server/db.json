@@ -59,6 +59,12 @@
       "lastName": "Sanders",
       "phoneNumber": "+1 345 123 5432",
       "id": 10
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "Jones",
+      "phoneNumber": "123",
+      "id": 11
     }
   ],
   "books": [
@@ -115,6 +121,15 @@
       "category": "Mystery",
       "price": 10.99,
       "quantity": 45
+    },
+    {
+      "isbn": "123",
+      "title": "Adventures in GraphQL Programming",
+      "authorId": "2",
+      "category": "Inspirational",
+      "price": 4.99,
+      "quantity": 34,
+      "id": 7
     }
   ]
 }
