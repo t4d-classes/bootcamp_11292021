@@ -8,3 +8,4 @@ export const carToolStore = createStore(
   carToolReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
+

@@ -3,13 +3,13 @@ import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-  addCar, saveCar, deleteCar, refreshCars,
+  saveCar, deleteCar, refreshCars,
   createEditCarAction, createCancelCarAction, createSortCarsAction,
 } from "../actions/carToolActions";
 
 import { sortedCarsSelector } from "../selectors/carToolSelectors";
 
-export const useCarToolReduxStore = () => {
+export const useCarTableReduxStore = () => {
 
   const cars = useSelector(sortedCarsSelector);
   const editCarId = useSelector(state => state.editCarId);
@@ -20,7 +20,6 @@ export const useCarToolReduxStore = () => {
 
   const actions = useMemo(() => bindActionCreators({
     refreshCars,
-    addCar,
     saveCar,
     deleteCar,
     editCar: createEditCarAction,
