@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
 import {
-  ADD_CAR_ACTION, SAVE_CAR_ACTION, DELETE_CAR_ACTION, EDIT_CAR_ACTION, CANCEL_CAR_ACTION, SORT_CARS_ACTION
+  REFRESH_CARS_DONE_ACTION, EDIT_CAR_ACTION, CANCEL_CAR_ACTION, SORT_CARS_ACTION,
 } from "../actions/carToolActions";
 
 const carList = [
@@ -11,29 +11,11 @@ const carList = [
 
 export const carsReducer = (cars = carList, action) => {
 
-  if (action.type === ADD_CAR_ACTION) {
-    return [
-      ...cars,
-      {
-        ...action.payload.car,
-        id: Math.max(...cars.map(c => c.id), 0) + 1,
-      },
-    ];
-  }
-
-  if (action.type === SAVE_CAR_ACTION) {
-    const carIndex = cars.findIndex(c => c.id === action.payload.car.id);
-    const newCars = [...cars];
-    newCars[carIndex] = action.payload.car;
-    return newCars;
-  }
-
-  if (action.type === DELETE_CAR_ACTION) {
-    return cars.filter(c => c.id !== action.payload.carId);
+  if (action.type === REFRESH_CARS_DONE_ACTION) {
+    return action.payload.cars;
   }
 
   return cars;
-
 };
 
 export const editCarIdReducer = (editCarId = -1, action) => {
@@ -43,14 +25,12 @@ export const editCarIdReducer = (editCarId = -1, action) => {
   }
 
   if ([
-    ADD_CAR_ACTION, SAVE_CAR_ACTION, DELETE_CAR_ACTION, CANCEL_CAR_ACTION, SORT_CARS_ACTION
+    REFRESH_CARS_DONE_ACTION, CANCEL_CAR_ACTION, SORT_CARS_ACTION
   ].includes(action.type)) {
     return -1;
   }
   
   return editCarId;
-
-
 };
 
 export const carsSortReducer = (
@@ -73,12 +53,22 @@ export const carsSortReducer = (
   return carsSort;
 }
 
+const isLoadingReducer = (isLoading = false, action) => {
+
+  if (action.type.includes("REQUEST")) {
+    return true;
+  }
+
+  if (action.type.includes("DONE")) {
+    return false;
+  }
+
+  return isLoading;
+};
+
 export const carToolReducer = combineReducers({
-  cars: carsReducer, // state.cars are the argument to the reducer
+  cars: carsReducer,
   editCarId: editCarIdReducer,
   carsSort: carsSortReducer,
+  isLoading: isLoadingReducer,
 })
-
-
-// export const carsReducer = (state = { cars: [], sortDir: 'asc' }, action) => {
-// const store = createStore(carsReducer)

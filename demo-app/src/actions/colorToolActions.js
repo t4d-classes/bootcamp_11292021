@@ -1,4 +1,4 @@
-import { all, append } from '../apis/colors';
+import { all, append, remove } from '../apis/colors';
 
 export const REFRESH_COLORS_REQUEST_ACTION = 'REFRESH_COLORS_REQUEST';
 export const REFRESH_COLORS_DONE_ACTION = 'REFRESH_COLORS_DONE';
@@ -6,7 +6,10 @@ export const REFRESH_COLORS_DONE_ACTION = 'REFRESH_COLORS_DONE';
 export const ADD_COLOR_REQUEST_ACTION = 'ADD_COLOR_REQUEST';
 export const ADD_COLOR_DONE_ACTION = 'ADD_COLOR_DONE';
 
-export const DELETE_COLOR_ACTION = 'DELETE_COLOR';
+export const DELETE_COLOR_REQUEST_ACTION = 'DELETE_COLOR_REQUEST';
+export const DELETE_COLOR_DONE_ACTION = 'DELETE_COLOR_DONE';
+
+
 export const SORT_COLORS_ACTION = 'SORT_COLORS';
 
 export const createRefreshColorsRequestAction = () => ({ type: REFRESH_COLORS_REQUEST_ACTION });
@@ -44,8 +47,19 @@ export const addColor = color => {
   };
 };
 
+export const createDeleteColorRequestAction = colorId =>
+  ({ type: DELETE_COLOR_REQUEST_ACTION, payload: { colorId } });
 
-export const createDeleteColorAction = colorId =>
-  ({ type: DELETE_COLOR_ACTION, payload: { colorId } });
+export const createDeleteColorDoneAction = colorId =>
+  ({ type: DELETE_COLOR_DONE_ACTION, payload: { colorId } });
+
+  export const deleteColor = colorId => {
+    return dispatch => {
+      dispatch(createDeleteColorRequestAction(colorId));
+      remove(colorId).then(() => dispatch(refreshColors()));
+    };
+  };
+
+
 export const createSortColorsAction = () =>
   ({ type: SORT_COLORS_ACTION });    

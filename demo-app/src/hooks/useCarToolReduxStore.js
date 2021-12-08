@@ -1,8 +1,9 @@
+import { useEffect, useMemo } from 'react';
 import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-  createAddCarAction, createSaveCarAction, createDeleteCarAction,
+  addCar, saveCar, deleteCar, refreshCars,
   createEditCarAction, createCancelCarAction, createSortCarsAction,
 } from "../actions/carToolActions";
 
@@ -17,15 +18,19 @@ export const useCarToolReduxStore = () => {
 
   const dispatch = useDispatch();
 
-  const actions = bindActionCreators({
-    addCar: createAddCarAction,
-    saveCar: createSaveCarAction,
-    deleteCar: createDeleteCarAction,
+  const actions = useMemo(() => bindActionCreators({
+    refreshCars,
+    addCar,
+    saveCar,
+    deleteCar,
     editCar: createEditCarAction,
     cancelCar: createCancelCarAction,
     sortCars: createSortCarsAction,
-  }, dispatch);
+  }, dispatch), [dispatch]);
 
+  useEffect(() => {
+    actions.refreshCars();
+  }, [actions]);  
 
   return {
     cars,

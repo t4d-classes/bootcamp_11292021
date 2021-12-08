@@ -1,10 +1,3 @@
-
-
-// export const all = () => {
-//   return fetch("http://localhost:3060/colors")
-//     .then(res => res.json());
-// };
-
 export const all = async () => {
   try {
     const res = await fetch("http://localhost:3060/colors")
@@ -15,6 +8,13 @@ export const all = async () => {
   }
 };
 
+export const one = async (colorId) => {
+
+  const res = await fetch(
+    `http://localhost:3060/colors/${encodeURIComponent(colorId)}`)
+  const color = await res.json();
+  return color;
+};
 
 export const append = async (color) => {
   const res = await fetch("http://localhost:3060/colors", {
@@ -28,15 +28,20 @@ export const append = async (color) => {
   return newColor;
 };
 
-// Short Lab Exercise
+export const replace = async (color) => {
 
-// Add the following methods:
+  const res = await fetch(
+    `http://localhost:3060/colors/${encodeURIComponent(color.id)}`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(color),
+    });
+  const newColor = await res.json();
+  return newColor;
+};
 
-// one(colorId: int) -> Promise<Color>
-// replace(color: Color) -> Promise<void>
-// delete(colorId: int) -> Promise<void>
-
-export const deleteColor = async (colorId) => {
+export const remove = async (colorId) => {
 
   return fetch(
     `http://localhost:3060/colors/${encodeURIComponent(colorId)}`, {
