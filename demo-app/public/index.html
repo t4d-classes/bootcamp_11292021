@@ -253,21 +253,21 @@
       //   .then(res => res.json())
       //   .then(car => console.log(car));
         
-      fetch("http://localhost:3060/cars", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          make: 'Nissan', model: 'Pathfinder', year: 2016,
-          color: 'darkblue', price: 45000,
-        }),
-      })
-      .then(res => {
-        for (let key of res.headers.keys()) {
-          console.log(key, res.headers.get(key));
-        }
-        return res.json();
-      })
-      .then(car => console.log(car));;
+      // fetch("http://localhost:3060/cars", {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     make: 'Nissan', model: 'Pathfinder', year: 2016,
+      //     color: 'darkblue', price: 45000,
+      //   }),
+      // })
+      // .then(res => {
+      //   for (let key of res.headers.keys()) {
+      //     console.log(key, res.headers.get(key));
+      //   }
+      //   return res.json();
+      // })
+      // .then(car => console.log(car));;
 
       // fetch("http://localhost:3060/cars/3", {
       //   method: 'PUT',
@@ -292,6 +292,135 @@
       //   }),
       // });      
 
+
+
+    </script>
+    <script>
+
+      'use strict';
+
+
+      // Array.prototype.map = function(transformFn) {
+
+      //   console.log('new map func');
+
+      //   const newArr = [];
+
+      //   this.forEach(item => {
+      //     newArr.push(transformFn(item));
+      //   });
+
+      //   return newArr;
+
+      // };
+
+      // const nums = [1,2,3,4,5];
+
+      // nums.map(x => x * 2);
+
+
+      // // call-site "this"
+      // function doIt() {
+      //   console.log(this);
+
+      //   // const that = this;
+
+      //   // function inner() {
+      //   //   console.log(that);
+      //   // }
+
+      //   // lexical "this"
+      //   const inner = () => {
+      //     console.log(this);
+      //   }
+
+      //   inner();
+      // }
+
+      // // doIt();
+      // // window.doIt();
+
+      // const o = {
+      //   id: 2,
+      //   doIt: doIt,
+      // };
+
+      // o.doIt();
+
+      // console.log(o.doIt === window.doIt);
+
+
+      // const parent = {
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName;
+      //   }
+      // };
+
+      // const child1 = Object.create(parent);
+      // child1.firstName = 'Bob';
+      // child1.lastName = 'Smith';
+
+      // const child2 = Object.create(parent);
+      // child2.firstName = 'Sally';
+      // child2.lastName = 'Thompkins';
+
+      // console.log(child1.fullName());
+      // console.log(child2.fullName());
+      // console.log(child1.fullName === child2.fullName);
+
+
+      // class Person {
+
+      //   constructor(firstName, lastName) {
+      //     this.firstName = firstName;
+      //     this.lastName = lastName;
+      //   }
+
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName;
+      //   }
+
+      // }
+
+      // const p1 = new Person("Bob", "Smith");
+      // const p2 = new Person("Sally", "Thompkins");
+
+      // console.log(p1.fullName());
+      // console.log(p2.fullName());
+      // console.log(p1.fullName === p2.fullName);
+
+
+      // // constructor function
+      // function Person2(firstName, lastName) {
+      //   this.firstName = firstName;
+      //   this.lastName = lastName;
+      // }
+
+      // Person2.prototype.fullName = function() {
+      //   return this.firstName + " " + this.lastName;
+      // }
+
+      // const p3 = new Person2("Bob", "Smith");
+      // const p4 = new Person2("Sally", "Thompkins");
+
+      // console.log(p3.fullName());
+      // console.log(p4.fullName());
+      // console.log(p3.fullName === p4.fullName);      
+
+
+      // const parent = {
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName;
+      //   }
+      // };
+
+      // const child1 = {};
+      // child1.firstName = 'Bob';
+      // child1.lastName = 'Smith';
+
+      // Object.setPrototypeOf(child1, parent);
+
+      // console.log(child1.fullName());
 
 
     </script>

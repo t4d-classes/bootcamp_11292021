@@ -2,23 +2,28 @@ import { Component } from 'react';
 
 export class CarEditRow extends Component {
 
-  // class property - ES2022
-  state = {
-    make: this.props.car.make,
-    model: this.props.car.model,
-    year: this.props.car.year,
-    color: this.props.car.color,
-    price: this.props.car.price,
-  }  
+  constructor(props) {
+    super(props);
 
-  // class arrow function - ES2022
-  change = (e) => {
+    this.state = {
+      make: props.car.make,
+      model: props.car.model,
+      year: props.car.year,
+      color: props.car.color,
+      price: props.car.price,
+    };
+
+    this.change = this.change.bind(this);
+    this.saveCar = this.saveCar.bind(this);
+  }
+
+  change(e) {
     this.setState({
       [ e.target.name ]: e.target.type === 'number' ? parseInt(e.target.value, 10) : e.target.value
     })
   }
 
-  saveCar = () => {
+  saveCar() {
     this.props.onSaveCar({
       ...this.state,
       id: this.props.car.id,
