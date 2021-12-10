@@ -29,6 +29,7 @@ export const typeDefs = gql`
     firstName: String
     lastName: String
     phoneNumber: String
+    books: [Book]
   }
 
   input NewAuthor {
@@ -44,7 +45,8 @@ export const typeDefs = gql`
     authorId: ID,
     category: String,
     price: Float,
-    quantity: Int    
+    quantity: Int
+    author: Author    
   }
 
   input NewBook {

@@ -62,5 +62,23 @@ export const resolvers = {
 
       return book;
     },
-  }
+  },
+  Author: {
+    books: (author) => {
+      const authorId = encodeURIComponent(author.id);
+      return fetch(`http://localhost:5050/books?authorId=${authorId}`)
+        .then(res => res.json());
+    },
+  },
+  Book: {
+    // default or implied resolver
+    // title: (book) => {
+    //   return book.title;
+    // },
+    author: (book) => {
+      const authorId = encodeURIComponent(book.authorId);
+      return fetch(`http://localhost:5050/authors/${authorId}`)
+        .then(res => res.json());
+    },
+  },
 };
