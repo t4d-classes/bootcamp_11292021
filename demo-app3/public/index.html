@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script>
+
+      // const outer = () => {
+
+      //   let t = 2;
+      //   console.log("called outer");
+
+      //   setTimeout(function firstTimeout() {
+      //     t = 4;
+      //     console.log("first timeout")
+      //   }, 2000);
+
+      //   return function inner() {
+      //     console.log(t);
+      //   };
+      // };
+
+      // const inner = outer();
+
+      // inner();
+
+      // setTimeout(function secondTimeout(){
+      //   inner();
+      //   console.log("first timeout")
+      // }, 4000)
+
+      // // console.dir(inner);
+
+      // setTimeout(() => {
+      //   console.log("a");
+      // }, 0);
+
+      // console.log("b");
+
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
+
+      // setTimeout(() => {
+      //   console.log("a");
+      //   setTimeout(() => {
+      //     console.log("b");
+      //     setTimeout(() => {
+      //       console.log("c");
+      //     }, delay());
+      //   }, delay());
+      // }, delay());
+
+      // Lab Exercise
+
+      // 1. Run the allDone function after all 3 setTimeout callbacks execute
+      // 2. The call to all 3 setTimeouts must be done in the first task
+      // 3. You can modify the code however you want except for the following:
+        // - No promises
+        // - The console logs for a, b, c must run in different tasks
+
+      // function allDone() {
+      //   console.log('all done');
+      // }
+
+      // let counter = 0;
+
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('a');
+      //   counter--;
+      //   if (counter === 0) allDone();
+      // }, delay());
+
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('b');
+      //   counter--;
+      //   if (counter === 0) allDone();
+      // }, delay());
+
+      // counter++;
+      // setTimeout(() => {
+      //   console.log('c');
+      //   counter--;
+      //   if (counter === 0) allDone();
+      // }, delay());
+
+
+      // class Promise {
+
+      //   constructor(fn) {
+
+      //     this.resolveFns = [];
+      //     this.rejectFns = [];
+
+      //     const resolveFn = result => {
+      //       this.resolveFns.forEach(fn => fn(result));
+      //     };
+
+      //     const rejectFn = result => {
+      //       this.rejectFns.forEach(fn => fn(result));
+      //     };
+
+
+      //     fn(resolveFn, rejectFn);
+      //   }
+
+      //   then(fn) {
+      //     this.resolveFns.push(fn);
+      //   }
+
+      //   catch(fn) {
+      //     this.rejectFns.push(fn);
+      //   }
+
+
+      // }  
+
+
+
+      // const p = new Promise((resolve, reject) => {
+
+      //   setTimeout(() => {
+      //     resolve({ name: 'a' });
+      //   }, 2000);
+
+      // });
+
+      // p
+      //   .then(result => {
+      //     console.log(result.name);
+      //   })
+      //   // .catch(result => {
+      //   //   console.log('rejected: ' + result.name);
+      //   // });
+
+      // p.then(result => {
+
+      // })
+
+      // console.log('made it here');
+
+
+      // const taskA = () => new Promise(resolve => setTimeout(() => resolve('a'), delay()));
+      // const taskB = () => new Promise(resolve => setTimeout(() => resolve('b'), delay()));
+      // const taskC = () => new Promise(resolve => setTimeout(() => resolve('c'), delay()));
+
+      // taskA()
+      //   .then(result => {
+      //     console.log(result);
+      //     return taskB();
+      //   })
+      //   .then(result => {
+      //     console.log(result);
+      //     return taskC();
+      //   })
+      //   .then(result => {
+      //     console.log(result);
+      //   });
+
+      // Promise.all([taskA(), taskB(), taskC()]).then(results => {
+      //   console.log("all done");
+      //   console.log(results);
+      // });
+
+
+    </script>
+    <script>
+
+      // const myFetch = url => {
+      //   return new Promise(resolve => {
+
+      //     const xhr = new XMLHttpRequest();
+
+      //     xhr.addEventListener("readystatechange", () => {
+      //       if (xhr.status === 200 && xhr.readyState === 4) {
+      //         resolve(JSON.parse(xhr.responseText));
+      //       }
+      //     });
+
+      //     xhr.open("GET", url);
+      //     xhr.send();
+
+      //   })
+      // }
+
+      
+      // Lab Exercise
+
+      // Using the code above, implement the a function named `myFetch` as described by
+      // the following call:
+
+      // myFetch("http://localhost:3060/cars").then(cars => console.log(cars));
+
+      // Lab Part 2
+
+      // Using the `myFetch` function, fetch all of the colors, then iterate over the
+      // colors and fetch each color individually. Once all of the individually fetched colors have been returned
+      // display all of the return values.
+
+      // myFetch('http://localhost:3060/colors')
+      //   .then(colors => {
+      //     return Promise.all(
+      //       colors.map(color => {
+      //         return myFetch('http://localhost:3060/colors/' + color.id);
+      //       })
+      //     );
+      //   })
+      //   .then(colors => console.log(colors));
+
+
+      // get all the cars
+      // fetch("http://localhost:3060/cars")
+      //   .then(res => res.json())
+      //   .then(cars => console.log(cars));
+
+      // fetch("http://localhost:3060/cars/1")
+      //   .then(res => res.json())
+      //   .then(car => console.log(car));
+        
+      // fetch("http://localhost:3060/cars", {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     make: 'Nissan', model: 'Pathfinder', year: 2016,
+      //     color: 'darkblue', price: 45000,
+      //   }),
+      // })
+      // .then(res => {
+      //   for (let key of res.headers.keys()) {
+      //     console.log(key, res.headers.get(key));
+      //   }
+      //   return res.json();
+      // })
+      // .then(car => console.log(car));;
+
+      // fetch("http://localhost:3060/cars/3", {
+      //   method: 'PUT',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     id: 3, make: 'Nissan', model: 'Pathfinder', year: 2016,
+      //     color: 'yellow', price: 45000,
+      //   }),
+      // });
+
+      // fetch("http://localhost:3060/cars/3", {
+      //   method: 'DELETE',
+      // });
+
+      // const carId = 3;
+
+      // fetch(`http://localhost:3060/cars/${encodeURIComponent(carId)}`, {
+      //   method: 'PATCH',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     model: 'Murano'
+      //   }),
+      // });      
+
+
+
+    </script>
+    <script>
+
+      'use strict';
+
+
+      // Array.prototype.map = function(transformFn) {
+
+      //   console.log('new map func');
+
+      //   const newArr = [];
+
+      //   this.forEach(item => {
+      //     newArr.push(transformFn(item));
+      //   });
+
+      //   return newArr;
+
+      // };
+
+      // const nums = [1,2,3,4,5];
+
+      // nums.map(x => x * 2);
+
+
+      // // call-site "this"
+      // function doIt() {
+      //   console.log(this);
+
+      //   // const that = this;
+
+      //   // function inner() {
+      //   //   console.log(that);
+      //   // }
+
+      //   // lexical "this"
+      //   const inner = () => {
+      //     console.log(this);
+      //   }
+
+      //   inner();
+      // }
+
+      // // doIt();
+      // // window.doIt();
+
+      // const o = {
+      //   id: 2,
+      //   doIt: doIt,
+      // };
+
+      // o.doIt();
+
+      // console.log(o.doIt === window.doIt);
+
+
+      // const parent = {
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName;
+      //   }
+      // };
+
+      // const child1 = Object.create(parent);
+      // child1.firstName = 'Bob';
+      // child1.lastName = 'Smith';
+
+      // const child2 = Object.create(parent);
+      // child2.firstName = 'Sally';
+      // child2.lastName = 'Thompkins';
+
+      // console.log(child1.fullName());
+      // console.log(child2.fullName());
+      // console.log(child1.fullName === child2.fullName);
+
+
+      // class Person {
+
+      //   constructor(firstName, lastName) {
+      //     this.firstName = firstName;
+      //     this.lastName = lastName;
+      //   }
+
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName;
+      //   }
+
+      // }
+
+      // const p1 = new Person("Bob", "Smith");
+      // const p2 = new Person("Sally", "Thompkins");
+
+      // console.log(p1.fullName());
+      // console.log(p2.fullName());
+      // console.log(p1.fullName === p2.fullName);
+
+
+      // // constructor function
+      // function Person2(firstName, lastName) {
+      //   this.firstName = firstName;
+      //   this.lastName = lastName;
+      // }
+
+      // Person2.prototype.fullName = function() {
+      //   return this.firstName + " " + this.lastName;
+      // }
+
+      // const p3 = new Person2("Bob", "Smith");
+      // const p4 = new Person2("Sally", "Thompkins");
+
+      // console.log(p3.fullName());
+      // console.log(p4.fullName());
+      // console.log(p3.fullName === p4.fullName);      
+
+
+      // const parent = {
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName;
+      //   }
+      // };
+
+      // const child1 = {};
+      // child1.firstName = 'Bob';
+      // child1.lastName = 'Smith';
+
+      // Object.setPrototypeOf(child1, parent);
+
+      // console.log(child1.fullName());
+
+
+    </script>
+  </body>
+</html>
